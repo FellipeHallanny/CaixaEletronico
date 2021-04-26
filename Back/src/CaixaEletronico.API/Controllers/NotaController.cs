@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CaixaEletronico.API.Data;
 using CaixaEletronico.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,44 +14,24 @@ namespace CaixaEletronico.API.Controllers
     public class NotaController : ControllerBase
     {
         
-        public IEnumerable<Nota> _notas = new Nota[] {
-            new Nota(){
-                    NotaId = 1,
-                    Valor = 50,
-                    QtdNota = 100,
-                    QrtCriticaNota = 15,
-                    ImagemURl = "nota50.png"
+        private readonly CaixaEletronicoContext _caixaEletronicoContext;
 
-             },
-              new Nota(){
-                    NotaId = 2,
-                    Valor = 20,
-                    QtdNota = 100,
-                    QrtCriticaNota = 15,
-                    ImagemURl = "nota20.png"
-
-             }
-        };
-
-        private readonly ILogger<NotaController> _logger;
-
-        public NotaController(ILogger<NotaController> logger)
+        public NotaController(CaixaEletronicoContext caixaEletronicoContext)
         {
-            _logger = logger;
+            _caixaEletronicoContext = caixaEletronicoContext;
+
         }
 
         [HttpGet]
         public IEnumerable<Nota> GetNotas()
         {
-           return _notas;
-    
-           
+            return _caixaEletronicoContext.Notas;
         }
 
         [HttpGet("{id}")]
-        public IEnumerable<Nota> GetNotasById(int id)
+        public Nota GetNotasById(int id)
         {
-          return _notas.Where(n => n.NotaId == id);
+            return _caixaEletronicoContext.Notas.FirstOrDefault(n => n.NotaId == id);
         }
     }
 }
