@@ -1,7 +1,50 @@
-<h1>Notas do componente</h1>
-
-<div *ngFor="let item of notas">
-  <p><b>Valor: </b>{{item.valor}}</p>
-  <p><b>Quantidade: </b>{{item.qtdNota}}</p>
-  <hr>
-</div>
+<h1>Notas</h1>
+<hr>
+<!-- <div class="form-inline">
+  <div class="form-group mb-2">
+    <input type="text" class="form-control mr-2" placeholder="buscar">
+    <button class="btn btn-outline-success">Buscar</button>
+  </div>
+</div> -->
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>
+        <button type="button" class="btn btn-outline-light btn-sm" (click)="alterarImagem()" type="button">
+          {{exibirImagem ? 'Ocultar' : 'Exibir'}}
+        </button>
+      </th>
+    <th>#</th>
+    <th>Valor</th>
+    <th>Quantidade</th>
+    <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="notas && notas.length">
+    <tr *ngFor="let item of notas">
+      <td>
+        <img [collapse]="!exibirImagem"
+             [isAnimated]="true"
+        src="/assets/{{item.imagemURl}}"
+        [style.width.px] ="larguraImagem"
+        [style.margin.px] = "margemImagem">
+    </td>
+    <td>{{item.notaId}}</td>
+    <td>{{item.valor}}</td>
+    <td>{{item.qtdNota}}</td>
+    <td *ngIf="item.qtdNota < item.qrtCriticaNota">
+      <span class="badge bg-danger">Alerta</span>
+    </td>
+    <td *ngIf="item.qtdNota > item.qrtCriticaNota">
+      <span class="badge bg-success">Ok</span>
+    </td>
+    </tr>
+  </tbody>
+  <tfoot *ngIf="!notas.length">
+    <tr>
+      <td class="text-center" colspan="5">
+        <h4>Nenhum evento encontrado!</h4>
+      </td>
+    </tr>
+  </tfoot>
+</table>

@@ -8,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotasComponent implements OnInit {
 
-public notas: any ;
 
+public notas: any = [];
+larguraImagem: number = 70;
+margemImagem: number = 2;
+exibirImagem: boolean = true;
+private _filtroLista: string = '';
 
   constructor(private http: HttpClient) { }
 
@@ -17,13 +21,15 @@ public notas: any ;
     this.getNotas();
   }
 
+  alterarImagem(){
+    this.exibirImagem = !this.exibirImagem;
+  }
 
   public getNotas() : void {
 
     this.http.get('https://localhost:5001/api/Nota').subscribe(
       response => {
         this.notas = response;
-        // this.eventosFiltrados = this.eventos
       },
       error => console.log(error)
     );
