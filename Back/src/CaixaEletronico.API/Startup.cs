@@ -41,6 +41,7 @@ namespace CaixaEletronico.API
             services.AddScoped<INotaPersistence, NotaPersistence>();
             services.AddScoped<ICaixaPersistence, CaixaPersistence>();
             services.AddScoped<ICaixaService, CaixaService>();
+            services.AddScoped<ISaqueService, SaqueService>();
 
             services.AddCors();
             services.AddSwaggerGen(c =>

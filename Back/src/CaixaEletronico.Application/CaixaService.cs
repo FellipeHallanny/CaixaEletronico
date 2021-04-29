@@ -16,7 +16,7 @@ namespace CaixaEletronico.Application
             _caixaPersistence = caixaPersistence;
             _geralPersistence = geralPersistence;
 
-        }
+        }      
 
         public async Task<Caixa> AddCaixas(Caixa model)
         {
@@ -108,6 +108,29 @@ namespace CaixaEletronico.Application
             {                
                 throw new Exception(ex.Message);
             }
-        }        
+        }
+
+        public async Task<Caixa> MudarStatusCaixaAsync(int caixaId)
+        {
+            try
+            {
+                var caixa = await _caixaPersistence.GetAllCaixaByIdAsync(caixaId,false);
+                if(caixa == null) return null;
+
+                caixa.IsAtivo = !caixa.IsAtivo;
+
+                _geralPersistence.Update(caixa);
+                if(await _geralPersistence.SaveChangesAsync())
+                {
+                    return await _caixaPersistence.GetAllCaixaByIdAsync(caixa.Id, false);
+                }
+                return null;
+
+            }
+            catch (Exception ex)
+            {                
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

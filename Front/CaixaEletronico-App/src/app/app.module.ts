@@ -10,13 +10,15 @@ import { CaixasComponent } from './caixas/caixas.component';
 import { NotasComponent } from './notas/notas.component';
 import { NavComponent } from './nav/nav.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { SaqueComponent } from './saque/saque.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     CaixasComponent,
     NotasComponent,
-      NavComponent
+      NavComponent,
+      SaqueComponent
    ],
   imports: [
     BrowserModule,

@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotasComponent implements OnInit {
 
-
 public notas: any = [];
 larguraImagem: number = 70;
 margemImagem: number = 2;
@@ -27,7 +26,7 @@ private _filtroLista: string = '';
 
   public getNotas() : void {
 
-    this.http.get('https://localhost:5001/api/Caixa').subscribe(
+    this.http.get('https://localhost:5001/api/Nota').subscribe(
       response => {
         this.notas = response;
       },

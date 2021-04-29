@@ -13,10 +13,11 @@ export class CaixasComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.getCaixas();
   }
 
   public getCaixas() : void{
-    this.http.get('https://localhost:5001/api/Nota').subscribe(
+    this.http.get('https://localhost:5001/api/Caixa').subscribe(
       response => {
         this.caixas = response;
       },

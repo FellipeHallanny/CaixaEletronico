@@ -15,7 +15,6 @@ namespace CaixaEletronico.API.Controllers
         public CaixaController(ICaixaService caixaService)
         {
             _caixaService = caixaService;
-
         }
 
         [HttpGet]
@@ -101,6 +100,23 @@ namespace CaixaEletronico.API.Controllers
                 return this.StatusCode(StatusCodes.Status500InternalServerError,
                                     $"Erro ao tentar deletar caixa. Erro: {ex.Message}");
             }
-        }
+        }   
+
+        [HttpPut("AtivarDesativarCaixa/{id}")]
+        public async Task<IActionResult> MudarStatusCaixa(int id)
+        {
+            try
+            {
+                var caixa = await _caixaService.MudarStatusCaixaAsync(id);
+                if (caixa == null) return BadRequest("Erro ao tentar desativar caixa.Verifique o ID");
+
+                return Ok(caixa);
+            }
+            catch (Exception ex)
+            {                
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                                    $"Erro ao tentar atualizar caixa. Erro: {ex.Message}");
+            }    
+        } 
     }
 }

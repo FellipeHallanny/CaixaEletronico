@@ -10,14 +10,13 @@ namespace CaixaEletronico.Persistence
     public class CaixaPersistence : ICaixaPersistence
     {
         private readonly CaixaEletronicoContext _context;
-
+    
         public CaixaPersistence(CaixaEletronicoContext context)
         {
             _context = context;
-
         }
         public async Task<Caixa> GetAllCaixaByIdAsync(int caixaId, bool includeNotas = false)
-        {            
+        {
             IQueryable<Caixa> query = _context.Caixas;
 
             if (includeNotas)
@@ -48,5 +47,6 @@ namespace CaixaEletronico.Persistence
 
             return await query.ToArrayAsync();
         }
+
     }
 }

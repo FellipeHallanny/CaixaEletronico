@@ -7,6 +7,6 @@ namespace CaixaEletronico.Domain
         public int Id { get; set; }
         public string DescricaoLocal { get; set; }
         public bool IsAtivo { get; set; }
-        public IEnumerable<CaixaNota> CaixaNotas { get; set; }
+        public IEnumerable<CaixaNota> CaixaNotas { get; private set; }
     }
 }

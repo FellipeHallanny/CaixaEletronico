@@ -11,5 +11,7 @@ namespace CaixaEletronico.Application.Contratos
 
         Task<Caixa[]> GetAllCaixasAsync(bool includeNotas = false);         
         Task<Caixa> GetAllCaixaByIdAsync(int CaixaId,bool includeNotas = false);
+
+        Task<Caixa> MudarStatusCaixaAsync(int caixaId);
     }
 }
