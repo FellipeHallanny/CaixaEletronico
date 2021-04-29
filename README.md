@@ -1,27 +1,29 @@
 # CaixaEletronicoApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
+Pelo VsConde 
 
-## Development server
+- executar "dotnet watch run" no diretorio => \Back\src\CaixaEletronico.API para subir API
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Angular
 
-## Code scaffolding
+Dentro do arquivo "notas.component.ts" e "caixas.component.ts" atentar para o endereço das portas da API, pois creio que na execução podera mudar.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- executar "npm start" no diretorio => \Front\CaixaEletronico-App para subir o Angula
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+# Primeiro Menu Caixa
 
-## Running unit tests
+Deve está com o sinal verde de funcionamento, se executar na api /api/Caixa/AtivarDesativarCaixa/{id}
+passando caixa '2' e der um refresh na pagina devera esta vermelho, ou seja, desativado
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Segundo Menu Nota
 
-## Running end-to-end tests
+Todas as notas deverão está com sinal de verde, notas com quantidade ideal, se for no banco e alterar para menor doque 15, e der um refresh na pagina deverar está vermelho.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+# Saque Pela API
 
-## Further help
+No caminho pasando ​/api​/Saque pasando um valor qalqer retorna quantas notas de cada seriam usadas para aqeuele saque, onde eu alteraria suas quantidasdes em banco pós o saque no determinado caixa.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+

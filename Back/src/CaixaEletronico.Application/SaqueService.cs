@@ -12,7 +12,7 @@ namespace CaixaEletronico.Application
     public class SaqueService : ISaqueService
     {
         
-        public string Saque(int caixaId, int valor)
+        public string Saque(int valor)
         {
             return sacar(valor);
         }

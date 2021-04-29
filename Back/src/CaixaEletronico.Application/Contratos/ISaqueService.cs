@@ -8,6 +8,6 @@ namespace CaixaEletronico.Application.Contratos
 {
     public interface ISaqueService
     {
-        public string Saque(int caixaId, int valor);
+        string Saque(int valor);
     }
 }

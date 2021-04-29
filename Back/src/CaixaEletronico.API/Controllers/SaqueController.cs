@@ -20,11 +20,11 @@ namespace CaixaEletronico.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Sacar(int caixaId, int valor)
+        public async Task<IActionResult> Sacar(int valor)
         {
             try
             {
-                var caixa = _saqueService.Saque(caixaId, valor);
+                var caixa = _saqueService.Saque(valor);
                 if (caixa == null) return BadRequest("Erro ao tentar desativar caixa.Verifique o ID");
 
                 return Ok(caixa);
