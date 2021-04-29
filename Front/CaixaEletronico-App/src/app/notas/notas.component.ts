@@ -27,7 +27,7 @@ private _filtroLista: string = '';
 
   public getNotas() : void {
 
-    this.http.get('https://localhost:5001/api/Nota').subscribe(
+    this.http.get('https://localhost:5001/api/Caixa').subscribe(
       response => {
         this.notas = response;
       },

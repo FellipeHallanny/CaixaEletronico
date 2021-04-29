@@ -1,3 +1,4 @@
+import {HttpClient} from '@angular/common/http'
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CaixasComponent implements OnInit {
 
-  constructor() { }
+  public caixas: any = [];
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
 
+  public getCaixas() : void{
+    this.http.get('https://localhost:5001/api/Nota').subscribe(
+      response => {
+        this.caixas = response;
+      },
+      error => console.log(error)
+    );
+  }
 }

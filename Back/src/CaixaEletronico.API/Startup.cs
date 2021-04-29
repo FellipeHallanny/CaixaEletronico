@@ -35,9 +35,12 @@ namespace CaixaEletronico.API
                         x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
                     );
 
-            services.AddScoped<INotaService, NotaService>();
+            
             services.AddScoped<IGeralPersistence, GeralPersistence>();
+            services.AddScoped<INotaService, NotaService>();
             services.AddScoped<INotaPersistence, NotaPersistence>();
+            services.AddScoped<ICaixaPersistence, CaixaPersistence>();
+            services.AddScoped<ICaixaService, CaixaService>();
 
             services.AddCors();
             services.AddSwaggerGen(c =>
